@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SendSlackNotification
   SPAM_CHANNEL = '#spam_notification'
 

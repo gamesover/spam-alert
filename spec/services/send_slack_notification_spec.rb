@@ -1,24 +1,26 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe SendSlackNotification do
-  subject {slack}
-  let(:slack) {
+  subject { slack }
+  let(:slack) do
     SendSlackNotification.new(message: message)
-  }
-  let(:message) {
+  end
+  let(:message) do
     {
-      "RecordType": "Bounce",
-      "Type": "SpamNotification",
+      "RecordType": 'Bounce',
+      "Type": 'SpamNotification',
       "TypeCode": 512,
-      "Name": "Spam notification",
-      "Tag": "",
-      "MessageStream": "outbound",
-      "Description": "The message was delivered, but was either blocked by the user, or classified as spam, bulk mail, or had rejected content.",
-      "Email": "zaphod@example.com",
-      "From": "notifications@honeybadger.io",
-      "BouncedAt": "2023-02-27T21:41:30Z",
+      "Name": 'Spam notification',
+      "Tag": '',
+      "MessageStream": 'outbound',
+      "Description": 'The message was delivered, but was either blocked by the user, or classified as spam, bulk mail, or had rejected content.',
+      "Email": 'zaphod@example.com',
+      "From": 'notifications@honeybadger.io',
+      "BouncedAt": '2023-02-27T21:41:30Z'
     }.transform_keys(&:to_sym)
-  }
+  end
 
   # throw out Slack::Web::Api::Errors::InvalidAuth
   # use VCR to do it correctly

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class SpamChecker
   SPAM_TYPECODE = 512
-
 
   def initialize(message:)
     self.message = message
