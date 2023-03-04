@@ -37,3 +37,4 @@ docker compose push
 * Model are skipped
 * Did not test really to slack. For prod purpose, it must be tested in real slack channel
 * Depends on deployment system, docker image is okay for some docker based cloud. But it won't apply to all systems.
+* CI/CD is ignored due to time restriction
