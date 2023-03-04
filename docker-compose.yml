@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  redis:
+    image: redis:7.0-alpine
+    restart: always
+    volumes:
+      - redis_data:/data
+    ports:
+      - '6379:6379'
+  app:
+    build: .
+    image: cloud.canister.io:5000/gamesover/spam-alert
+    restart: always
+    command: [sh, -c, "bundle exec rails db:migrate && bundle exec rails s -b 0.0.0.0"]
+    ports:
+      - "3000:3000"
+    env_file: .env.production.local
+
+  sidekiq:
+    build: .
+    image: cloud.canister.io:5000/gamesover/spam-alert
+    depends_on:
+      - 'redis'
+    restart: always
+    command: bundle exec sidekiq
+    env_file: .env.production.local
+
+volumes:
+  redis_data:
