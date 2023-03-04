@@ -2,7 +2,9 @@
 
 Rails.application.routes.draw do
   resources :spams, only: [] do
-    get :check
+    collection do
+      get :check
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
